@@ -1,0 +1,20 @@
+[Unit]
+Description=Pioneer startup service ROS2
+Wants=network-online.target systemd-udev-settle.service
+After=network-online.target systemd-udev-settle.service
+
+[Service]
+Type=simple
+User=pioneer-ix
+Group=dialout
+SupplementaryGroups=tty
+ExecStart=/bin/bash -lc '\
+  ./start_rover.bash'
+Restart=on-failure
+RestartSec=1s
+StandardOutput=journal
+StandardError=journal
+WorkingDirectory=/home/pioneer-ix/multirobot/
+
+[Install]
+WantedBy=multi-user.target

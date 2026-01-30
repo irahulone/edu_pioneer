@@ -1,0 +1,3 @@
+sudo nvim /boot/firmware/config.txt
+# turn off the built-in Wi-Fi radio
+dtoverlay=disable-wifi
